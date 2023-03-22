@@ -13,8 +13,10 @@ app.use(express.urlencoded({extended: true})) // Leer reques.body de un form
 // });
 
 app.post("/formulario", (req, res) => {
-  console.log(req.body);
-  res.send(`Formulario enviado "POST" `);
+  const {nombre, apellido} = req.body;
+  if(!nombre || !apellido) return res.redirect("/error.html")
+
+  res.send("Formulario enviado")
 });
 
 app.get("/", (req, res) => {
