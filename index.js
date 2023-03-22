@@ -4,10 +4,16 @@ const PORT = 5000;
 
 // Middleware
 app.use(express.static("public"));
+app.use(express.urlencoded({extended: true})) // Leer reques.body de un form
 
-app.get("/formulario", (req, res) => {
-  const { nombre } = req.query;
-  res.send(`Formulario enviado ${nombre} `);
+// app.get("/formulario", (req, res) => {
+//   const { nombre } = req.query;
+//   res.send(`Formulario enviado ${nombre} `);
+// });
+
+app.post("/formulario", (req, res) => {
+  console.log(req.body);
+  res.send(`Formulario enviado "POST" `);
 });
 
 app.get("/", (req, res) => {
