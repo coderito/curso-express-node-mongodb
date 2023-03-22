@@ -1,10 +1,18 @@
-const http = require("http");
-const PORT = 3000;
+const express = require("express");
+const app = express();
+const PORT = 5000;
 
-const server = http.createServer((req, res) => {
-  res.end("Este es la respuesta");
-});
+// Middleware
+app.use(express.static("public"))
 
-server.listen(PORT, () => {
-  console.log("Funcionanading");
-});
+app.get("/", (req, res) => {
+    res.send('Hello')
+})
+
+app.get("/juan", (req, res) => {
+    res.end("Hello juan")
+})
+
+app.listen(PORT, () => {
+    console.log(`Example in http://localhost:${PORT}`)
+})
