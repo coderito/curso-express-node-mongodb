@@ -3,16 +3,21 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use(express.static("public"))
+app.use(express.static("public"));
+
+app.get("/formulario", (req, res) => {
+  const { nombre } = req.query;
+  res.send(`Formulario enviado ${nombre} `);
+});
 
 app.get("/", (req, res) => {
-    res.send('Hello')
-})
+  res.send("Hello");
+});
 
 app.get("/juan", (req, res) => {
-    res.end("Hello juan")
-})
+  res.end("Hello juan");
+});
 
 app.listen(PORT, () => {
-    console.log(`Example in http://localhost:${PORT}`)
-})
+  console.log(`Example in http://localhost:${PORT}`);
+});
